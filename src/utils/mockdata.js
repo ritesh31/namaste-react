@@ -1,54 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo">
-        <img src="https://fastly.picsum.photos/id/1041/200/200.jpg?hmac=1CDPtzGhHDqltV1i3b5YV4hY9UYY_6ubvXbxJO9QchQ" />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const SearchBar = () => (
-  <div className="search-bar">
-    <input type="text" placeholder="Search..." />
-    <button type="button">Search</button>
-  </div>
-);
-
-const RestaurantCard = ({ resData }) => {
-  const {
-    name,
-    cloudinaryImageId,
-    minDeliveryTime,
-    maxDeliveryTime,
-    rating,
-    cuisine,
-  } = resData;
-  return (
-    <div className="res-card">
-      <img
-        src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}
-      />
-      <h3 className="mt-mb-5">{name}</h3>
-      <h4 className="mt-mb-5">
-        {rating} | {minDeliveryTime}-{maxDeliveryTime} mins
-      </h4>
-      <span>{cuisine.join(",")}</span>
-    </div>
-  );
-};
-
 const restaurants = [
   {
     id: "1",
@@ -63,7 +12,7 @@ const restaurants = [
     id: "2",
     name: "Spicy Dragon",
     cuisine: ["Szechuan Chinese"],
-    rating: 4.8,
+    rating: 3.8,
     minDeliveryTime: 25,
     maxDeliveryTime: 30,
     cloudinaryImageId: "53aa76734ecf3ab065ba3d65957cee0c",
@@ -81,7 +30,7 @@ const restaurants = [
     id: "4",
     name: "Burger Barn",
     cuisine: ["American"],
-    rating: 4.0,
+    rating: 3.0,
     minDeliveryTime: 25,
     maxDeliveryTime: 30,
     cloudinaryImageId: "iydxtay1mnne2ktw7txe",
@@ -99,7 +48,7 @@ const restaurants = [
     id: "6",
     name: "Taco Fiesta",
     cuisine: ["Mexican"],
-    rating: 4.3,
+    rating: 2.3,
     minDeliveryTime: 25,
     maxDeliveryTime: 30,
     cloudinaryImageId: "e0839ff574213e6f35b3899ebf1fc597",
@@ -143,26 +92,4 @@ const restaurants = [
   },
 ];
 
-const Body = () => (
-  <div className="body">
-    <SearchBar />
-    <div className="restaurant-container">
-      {restaurants.map((restaurant) => (
-        <RestaurantCard key={restaurant.id} resData={restaurant} />
-      ))}
-    </div>
-  </div>
-);
-
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout />);
+export default restaurants;
