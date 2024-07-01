@@ -55,4 +55,9 @@ Two types of Export/Import
 - useState() - Superpowerful state variables in react
 - useEffect()
 
+# React Routing
+2 Types of routing in web apps
+- Client Side Routing
+- Server Side Routing
+
 
