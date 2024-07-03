@@ -95,6 +95,7 @@ img {
 
 .search-bar {
   height: 25px;
+
   input {
     height: 100%;
   }
@@ -103,4 +104,9 @@ img {
     height: 120%;
     font-size: 15px;
   }
+}
+
+.user-card {
+  border: 1px solid;
+  padding: 30px
 }
