@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
-  console.log("Header called");
   const [btnName, setBtnName] = useState("Login");
 
   // If dependency array is [btnName] => useEffect will called when btnName value changed
-  useEffect(() => {
-    console.log("useEffect called");
-  }, [btnName]);
+  // useEffect(() => {
+  //   console.log("useEffect called");
+  // }, [btnName]);
 
   return (
     <div className="header">
@@ -19,6 +19,14 @@ const Header = () => {
       <div className="nav-items">
         <ul>
           <li>
+            Online Status:{" "}
+            {useOnlineStatus() ? (
+              <span className="network-status online"></span>
+            ) : (
+              <span className="network-status offline"></span>
+            )}
+          </li>
+          <li>
             <Link to="/">Home</Link>
           </li>
           <li>
@@ -26,6 +34,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/contact">Contact</Link>
+          </li>
+          <li>
+            <Link to="/grocery">Grocery</Link>
           </li>
           <li>Cart</li>
           <button
