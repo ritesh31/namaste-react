@@ -51,13 +51,16 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter-container">
+      <div className="filter-container flex m-4 place-content-evenly">
         <SearchBar handleSearchText={onHandleSearchText} />
-        <button className="filter-btn" onClick={() => setTopResList()}>
+        <button
+          className="filter-btn bg-pink-200 p-3 rounded-lg hover:bg-pink-300"
+          onClick={() => setTopResList()}
+        >
           Top Rated Restaurants
         </button>
       </div>
-      <div className="restaurant-container">
+      <div className="restaurant-container flex flex-wrap place-content-around">
         {filteredResList?.length > 0 &&
           filteredResList?.map((restaurant) => (
             <Link

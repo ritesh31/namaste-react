@@ -12,13 +12,13 @@ const Header = () => {
   // }, [btnName]);
 
   return (
-    <div className="header">
-      <div className="logo">
-        <img src={LOGO_URL} />
+    <div className="flex justify-between items-center bg-sky-200 p-4">
+      <div className="">
+        <img src={LOGO_URL} className="w-28 cursor-pointer" />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div className="">
+        <ul className="flex uppercase font-medium cursor-pointer text-lg">
+          <li className="mr-8">
             Online Status:{" "}
             {useOnlineStatus() ? (
               <span className="network-status online"></span>
@@ -26,19 +26,19 @@ const Header = () => {
               <span className="network-status offline"></span>
             )}
           </li>
-          <li>
+          <li className="mr-8">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="mr-8">
             <Link to="/about">About</Link>
           </li>
-          <li>
+          <li className="mr-8">
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
+          <li className="mr-8">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li className="mr-8">Cart</li>
           <button
             className="login-btn"
             onClick={() => {

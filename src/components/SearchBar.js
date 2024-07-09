@@ -16,8 +16,9 @@ const SearchBar = ({ handleSearchText }) => {
         placeholder="Search..."
         value={searchText}
         onChange={(event) => setSearchText(event.target.value)}
+        className="border-2 p-1"
       />
-      <button type="button" onClick={() => submitSearchText()}>
+      <button type="button" onClick={() => submitSearchText()} className="bg-blue-500 p-1.5 w-24 text-white">
         Search
       </button>
     </div>
