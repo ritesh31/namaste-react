@@ -14,6 +14,7 @@
 // export default About;
 import React, { Component } from "react";
 import UserClass from "./UserClass";
+import UserContext from "../utils/usercontext";
 
 export default class About extends Component {
   constructor(props) {
@@ -30,6 +31,11 @@ export default class About extends Component {
       <div>
         <h2>About</h2>
         <UserClass name="Ritesh" location="Pune" />
+        <UserContext.Consumer>
+          {(user) => {
+            return <h2>User: {user.name}</h2>;
+          }}
+        </UserContext.Consumer>
         {/* <UserClass name="Elon Musk" location="Pune" /> */}
       </div>
     );

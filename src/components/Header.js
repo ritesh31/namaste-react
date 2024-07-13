@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import data from "../utils/usercontext";
+import UserContext from "../utils/usercontext";
 
 const Header = () => {
+  const userData = useContext(UserContext);
+  console.log(userData)
   const [btnName, setBtnName] = useState("Login");
 
   // If dependency array is [btnName] => useEffect will called when btnName value changed
@@ -45,7 +49,7 @@ const Header = () => {
               btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
             }}
           >
-            {btnName}
+            {userData?.name}
           </button>
         </ul>
       </div>

@@ -1,14 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import SearchBar from "./SearchBar";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withOpenLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/usercontext";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
   const [filteredResList, setFilteredResList] = useState([]);
+
+  const { setUserName} = useContext(UserContext);
+  // console.log(userContext);
+
+  const RestaurantCardOpen = withOpenLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -47,6 +53,7 @@ const Body = () => {
       </h1>
     );
   }
+
   return resList?.length <= 0 ? (
     <Shimmer />
   ) : (
@@ -60,6 +67,10 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
+      <div>
+        <label>Name: </label>
+        <input type="text" className="border border-black" onChange={(event) => setUserName(event.target.value)}/>
+      </div>
       <div className="restaurant-container flex flex-wrap place-content-around">
         {filteredResList?.length > 0 &&
           filteredResList?.map((restaurant) => (
@@ -67,7 +78,11 @@ const Body = () => {
               key={restaurant?.info?.id}
               to={`/restaurants/${restaurant?.info?.id}`}
             >
-              <RestaurantCard resData={restaurant} />
+              {restaurant?.info?.isOpen ? (
+                <RestaurantCardOpen resData={restaurant} />
+              ) : (
+                <RestaurantCard resData={restaurant} />
+              )}
             </Link>
           ))}
       </div>
